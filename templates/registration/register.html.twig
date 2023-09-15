@@ -3,19 +3,46 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-
-    {{ form_errors(registrationForm) }}
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.lastname) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+<div class="row d-flex justify-content-center p-4 mt-5">
+    <div class="col-md-4 d-flex justify-content-center p-4 mt-3" style="border:1px solid grey;box-shadow:1px 2px 2px;background-color:rgb(237, 234, 234)">  
+        {{ form_start(registrationForm) }}
+        <div class="form_row" >
+            <h1 class="d-flex justify-content-center">Register</h1>
+            <div class="errorsRegistrationForm">
+                {{ form_errors(registrationForm) }}
+            </div>
+            <div class="row"> 
+                <div class="col-md-4 d-flex justify-content-center">{{ form_row(registrationForm.firstname) }}</div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 d-flex justify-content-center">{{ form_row(registrationForm.lastname) }}</div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 d-flex justify-content-center">{{ form_row(registrationForm.email) }}</div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 d-flex justify-content-center">{{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}</div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 ">{{ form_row(registrationForm.agreeTerms) }}</div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <button type="submit" class="btn btn-primary col-md-4">Register</button>
+                <div class="col-md-4"></div>
+            </div>               
+        </div>
+        {{ form_end(registrationForm) }}
+    </div>    
+</div>
 {% endblock %}
