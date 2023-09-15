@@ -49,11 +49,17 @@ class Book
     #[Gedmo\Timestampable(on:'create')]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'books')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?library $fklibraries = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
-
+    public function __toString(){
+        return $this->title;
+    }
     public function getIsbn(): ?string
     {
         return $this->isbn;
@@ -185,4 +191,16 @@ class Book
 
         return $this;
     } */
+
+    public function getFklibraries(): ?library
+    {
+        return $this->fklibraries;
+    }
+
+    public function setFklibraries(?library $fklibraries): static
+    {
+        $this->fklibraries = $fklibraries;
+
+        return $this;
+    }
 }
