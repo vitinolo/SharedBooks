@@ -51,7 +51,11 @@ class Book
 
     #[ORM\ManyToOne(inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?library $fklibraries = null;
+    private ?Library $fklibraries = null;
+
+    #[ORM\ManyToOne(inversedBy: 'books')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Gender $fkgenders = null;
 
     public function getId(): ?int
     {
@@ -200,6 +204,18 @@ class Book
     public function setFklibraries(?library $fklibraries): static
     {
         $this->fklibraries = $fklibraries;
+
+        return $this;
+    }
+
+    public function getFkgenders(): ?Gender
+    {
+        return $this->fkgenders;
+    }
+
+    public function setFkgenders(?Gender $fkgenders): static
+    {
+        $this->fkgenders = $fkgenders;
 
         return $this;
     }

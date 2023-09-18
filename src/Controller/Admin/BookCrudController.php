@@ -3,12 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Book;
-use App\Entity\Library;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -29,6 +29,7 @@ class BookCrudController extends AbstractCrudController
         return [
             IntegerField::new('id')->onlyOnIndex(),
             AssociationField::new('fklibraries'),
+            AssociationField::new('fkgenders'),
             TextField::new('isbn'),
             TextField::new('title'),
             TextField::new('author'),
@@ -36,7 +37,11 @@ class BookCrudController extends AbstractCrudController
             TextField::new('lent_date'),
             TextField::new('nb_pages'),
             TextField::new('editor'),
-            TextField::new('book_cover'),
+            $image = ImageField::new('book_cover')
+            ->setUploadDir('public/divers/images')
+            ->setBasePath('divers/images')
+            ->setSortable(false)
+            ->setFormTypeOption('required',false)->setColumns('col-md-2'),
             TextField::new('publication_date'),
             TextEditorField::new('description'),
             DateField::new('createdAt')->onlyOnIndex(),
