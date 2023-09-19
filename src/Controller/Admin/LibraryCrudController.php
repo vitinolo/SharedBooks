@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -28,6 +29,11 @@ class LibraryCrudController extends AbstractCrudController
         return [
             IntegerField::new('id')->onlyOnIndex(),
             TextField::new('name'),
+            $image = ImageField::new('image')
+            ->setUploadDir('public/divers/images')
+            ->setBasePath('divers/images')
+            ->setSortable(false)
+            ->setFormTypeOption('required',false)->setColumns('col-md-2'),
             TextField::new('nblivre'),
             AssociationField::new('fkusers'),
             DateField::new('createdAt')->onlyOnIndex(),

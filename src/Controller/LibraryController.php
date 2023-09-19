@@ -1,42 +1,54 @@
 <?php
 
 namespace App\Controller;
+
+use App\Entity\Book;
 use App\Repository\BookRepository; 
 use App\Repository\GenderRepository; 
 use App\Repository\LibraryRepository; 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LibraryController extends AbstractController
-{
-    #[Route('/', name: 'app_library')]
-    public function index(LibraryRepository $repo): Response
+{   
+  //affichage des livres de façon fluide
+    #[Route('/', name: 'app_book')]
+    public function index(BookRepository $repo): Response
     {
-        $library = $repo->findBy([], ['createdAt' => 'DESC'], 10);
-        return $this->render('library/library.html.twig', [
-            'library' => $library
+        
+        $book = $repo->findBy([], ['createdAt' => 'DESC'], 1);
+        $book1 = $repo->findBy([], ['createdAt' => 'DESC'], 1,1);
+        $book2 = $repo->findBy([], ['createdAt' => 'DESC'], 1,2);
+        $book3 = $repo->findBy([], ['createdAt' => 'DESC'], 3,3);
+        $book4 = $repo->findBy([], ['createdAt' => 'DESC'], 3,6);
+        $book5 = $repo->findBy([], ['createdAt' => 'DESC'], 3,9);
+        return $this->render('book/book.html.twig', [
+            'book' => $book,
+            'book1'=> $book1,
+            'book2'=> $book2,
+            'book3'=> $book3,
+            'book4'=> $book4,
+            'book5'=> $book5,
         ]);
     }
+
+    //affichage d'un livre
+    #[Route('/{id}', name: 'showone', requirements:['id'=>'\d+'])]
+    public function showOne($id, BookRepository $repo, EntityManagerInterface $em ){
+      //1. récupèrer la librairie à afficher en utilisant l'id
+      $book = $repo->find($id);
+      //2. vérifier si le livre existe
+      if(!$book){
+        throw $this->createNotFoundException('le livre demandé n\existe pas');
+      } 
+      //3. on retourne la vue portant détail du livre
+      return $this->render('shows/show.html.twig',[
+        'book'=> $book,
+      ]);
+    }
+
 }
 
-class GenderController extends AbstractController
-{
-    #[Route('/gender', name: 'app_gender')]
-    public function index(GenderRepository $repo): Response 
-    {
-        return $this->render('gender/gender.html.twig', [
-            'gender' => $gender
-        ]);
-    }
-}
-class BookController extends AbstractController
-{
-    #[Route('/book', name: 'app_book')]
-    public function index(BookRepository $repo): Response 
-    {
-        return $this->render('book/book.html.twig', [
-            'book' => $book
-        ]);
-    }
-}
+

@@ -33,6 +33,9 @@ class Library
     #[ORM\OneToMany(mappedBy: 'fklibraries', targetEntity: Book::class)]
     private Collection $books;
 
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
@@ -119,6 +122,18 @@ class Library
                 $book->setFklibraries(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

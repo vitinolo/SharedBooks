@@ -22,7 +22,6 @@ class GenderCrudController extends AbstractCrudController
         return Gender::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -30,6 +29,7 @@ class GenderCrudController extends AbstractCrudController
             TextField::new('name'),      
         ];
     }
+    
     public function configureFilters(Filters $filters): Filters
     {
         return $filters

@@ -22,7 +22,7 @@ class DashboardController extends AbstractDashboardController
        if($this->isGranted('ROLE_EDITOR')){
         return $this->render('admin/dashboard.html.twig');
         }else
-        return $this->redirectToRoute('app_library');
+        return $this->redirectToRoute('app_book');
 
     }
 
@@ -34,7 +34,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {   
-        yield MenuItem::linkToRoute('Go to site', 'fa-solid fa-arrow-rotate-left','app_library');
+        yield MenuItem::linkToRoute('Go to site', 'fa-solid fa-arrow-rotate-left','app_book');
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         
         if ($this->isGranted('ROLE_EDITOR')){
