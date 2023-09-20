@@ -1,19 +1,87 @@
 {% extends 'base.html.twig' %} 
 {% block title %}Hello MyLybrary!{% endblock %} 
 {% block body %}
-    <div class="container">
-        <div class="row mt-5 mb-5">
+<div class="container">
+    <div class="row mt-3 mb-3">
+        <div class="row ">
+            <h3 class="col-md-4">&nbsp; Librairies...</h3>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="col-md-6">
             {% for library in library %}
-            <div class="card m-3" style="width: 18rem; box-shadow: 1px 1px 1px">
+            <div class="card m-3" style=" box-shadow: 1px 1px 1px">
                 <div class="card-body">
-                <h5 class="card-title">{{ library.name }} </h5>
-                <img src="{{ asset('divers/images/' ~ library.image) }}" class="img-fluid card-img-top" alt="image librairie" />
-                <p class="card-text">{{ library.nblivre }} page(s)</p>
-            
-                <a href="{{ path('showbooks', {'id':library.id})}}" class="btn btn-primary">Visiter</a>
+                <h5 class="card-title text-truncate">{{ library.name }} </h5>
+                <img src="{{ asset('divers/images/' ~ library.image) }}" class="img-fluid card-img-top" style="height:200px;" alt="image librairie" />
+                <p class="card-text">{{ library.nblivre }} livre(s)</p>         
+                <a href="{{ path('library_detail', {'id':library.id})}}" class="btn btn-primary">Visiter</a>
                 </div>
             </div>
             {% endfor %}
         </div>
+        <div class="col-md-3">
+            {% for library1 in library1 %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+                <div class="card-body">
+                <h5 class="card-title text-truncate">{{ library1.name }} </h5>
+                <img src="{{ asset('divers/images/' ~ library1.image) }}" class="img-fluid card-img-top"  style="height:200px;" alt="image librairie" />
+                <p class="card-text">{{ library1.nblivre }} livre(s)</p>
+                <a href="{{ path('library_detail', {'id':library1.id})}}" class="btn btn-primary">Visiter</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            {% for library2 in library2 %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+                <div class="card-body">
+                <h5 class="card-title text-truncate">{{ library2.name }} </h5>
+                <img src="{{ asset('divers/images/' ~ library2.image) }}" class="img-fluid card-img-top" style="height:200px;" alt="image librairie" />
+                <p class="card-text">{{ library2.nblivre }} livre(s)</p>
+                <a href="{{ path('library_detail', {'id':library2.id})}}" class="btn btn-primary">Visiter</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>      
     </div>
+    <div class="row mt-3 mb-3 dd-flex justify-content-center">
+        <div class="col-md-4">
+            {% for library3 in library3 %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+                <div class="card-body">
+                <h5 class="card-title text-truncate">{{ library3.name }} </h5>
+                <img src="{{ asset('divers/images/' ~ library3.image) }}" class="img-fluid card-img-top" style="height:200px;" alt="image librairie" />
+                <p class="card-text">{{ library3.nblivre }} livre(s)</p>
+                <a href="{{ path('library_detail', {'id':library3.id})}}" class="btn btn-primary">Visiter</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            {% for library4 in library4 %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+                <div class="card-body">
+                <h5 class="card-title text-truncate">{{ library4.name }} </h5>
+                <img src="{{ asset('divers/images/' ~ library4.image) }}" class="img-fluid card-img-top" style="height:200px;" alt="image librairie" />
+                <p class="card-text">{{ library4.nblivre }} livre(s)</p>
+                <a href="{{ path('library_detail', {'id':library4.id})}}" class="btn btn-primary">Visiter</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            {% for library5 in library5 %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+                <div class="card-body">
+                <h5 class="card-title text-truncate">{{ library5.name }} </h5>
+                <img src="{{ asset('divers/images/' ~ library5.image) }}" class="img-fluid card-img-top" style="height:200px;" alt="image librairie" />
+                <p class="card-text">{{ library5.nblivre }} livre(s)</p>
+                <a href="{{ path('library_detail', {'id':library5.id})}}" class="btn btn-primary">Visiter</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>                 
+    </div>
+</div>
 {% endblock %}

@@ -196,12 +196,12 @@ class Book
         return $this;
     } */
 
-    public function getFklibraries(): ?library
+    public function getFklibraries(): ?Library
     {
         return $this->fklibraries;
     }
 
-    public function setFklibraries(?library $fklibraries): static
+    public function setFklibraries(?Library $fklibraries): static
     {
         $this->fklibraries = $fklibraries;
 

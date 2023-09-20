@@ -1,20 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GenderController!{% endblock %}
+{% block title %}books!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    Gender
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/symfony/SharedBooks/src/Controller/GenderController.php'|file_link(0) }}">src/Controller/GenderController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/symfony/SharedBooks/templates/gender/index.html.twig'|file_link(0) }}">templates/gender/index.html.twig</a></code></li>
-    </ul>
+<div class="container">
+    <div class="row mt-3 mb-3">   
+        <div class="col-md-4">
+            <div class="col-md-4" style="margin-left:20px;font-size:25px">Policier</div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            {% for genders in genders %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px;">
+                <div class="card-body">
+                    <h5 class="card-title col-10 text-truncate">{{ genders.title }} </h5>
+                    <p class="card-title col-10 text-truncate">{{ genders.author }} </p>
+                    <img src="{{ asset('divers/images/' ~ genders.bookcover) }}" class="img-fluid card-img-top"style="box-shadow: 10px 1px 10px;" alt="image d'un livre" />    
+                </div>
+            </div>
+            {% endfor %}
+        </div>  
+        <div class="col-md-4">
+            <div class="col-md-4" style="margin-left:20px;font-size:25px">Aventure</div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            {% for genders1 in genders1 %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px;">
+                <div class="card-body">
+                    <h5 class="card-title col-10 text-truncate">{{ genders1.title }} </h5>
+                    <p class="card-title col-10 text-truncate">{{ genders1.author }} </p>
+                    <img src="{{ asset('divers/images/' ~ genders1.bookcover) }}" class="img-fluid card-img-top"style="box-shadow: 10px 1px 10px;" alt="image d'un livre" />
+                </div>
+            </div>
+            {% endfor %}
+        </div>  
+        <div class="col-md-4">
+            <div class="col-md-4" style="margin-left:20px;font-size:25px">Théatre</div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            {% for genders2 in genders2 %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px;">
+                <div class="card-body">
+                    <h5 class="card-title col-10 text-truncate">{{ genders2.title }} </h5>
+                    <p class="card-title col-10 text-truncate">{{ genders2.author }} </p>
+                    <img src="{{ asset('divers/images/' ~ genders2.bookcover) }}" class="img-fluid card-img-top"style="box-shadow: 10px 1px 10px;" alt="image d'un livre" />
+                </div>
+            </div>
+            {% endfor %}
+        </div>  
+    </div> 
 </div>
 {% endblock %}
