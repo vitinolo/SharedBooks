@@ -15,8 +15,8 @@
             <div class="card m-3" style="box-shadow: 1px 1px 1px;">
                 <div class="card-body">
                 <h5 class="card-title col-10 text-truncate">{{ book.title }} </h5>
-                <p class="card-text">{{ book.author }}</p>
-                <img src="{{ asset('divers/images/' ~ book.bookcover) }}" class="img-fluid card-img-top" style="height:300px;width:300px" alt="image d'un livre" />
+                <p class="card-text text-truncate">{{ book.author }}</p>
+                <div class="col-md-6"><img src="{{ asset('divers/images/' ~ book.bookcover) }}" class="img-fluid card-img-top mb-2" style="height:300px;box-shadow: 10px 1px 10px;" alt="image d'un livre" /></div>              
                 <p class="card-text">{{ book.editor }}</p>
                 <p class="card-text">{{ book.nbPages }} page(s)</p>
                 <p class="card-text col-10 text-truncate">{{ book.description }}</p>     
@@ -27,11 +27,11 @@
         </div>
         <div class="col-md-3">
             {% for book1 in book1 %}
-            <div class="card mt-3" style="box-shadow: 1px 1px 1px;">
+            <div class="card m-3" style="box-shadow: 1px 1px 1px;">
                 <div class="card-body">
                 <h5 class="card-title col-10 text-truncate">{{ book1.title }} </h5>
-                <p class="card-text">{{ book1.author }}</p>
-                <img src="{{ asset('divers/images/' ~ book1.bookcover) }}" class="img-fluid card-img-top" style="height:300px;" alt="image d'un livre" />
+                <p class="card-text text-truncate">{{ book1.author }}</p>
+                <img src="{{ asset('divers/images/' ~ book1.bookcover) }}" class="img-fluid card-img-top mb-2" style="height:300px;box-shadow: 10px 1px 10px;" alt="image d'un livre" />
                 <p class="card-text">{{ book1.editor }}</p>
                 <p class="card-text">{{ book1.nbPages }} page(s)</p>
                 <p class="card-text col-10 text-truncate">{{ book1.description }}</p>     
@@ -45,8 +45,8 @@
             <div class="card m-3" style="box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h5 class="card-title col-10 text-truncate">{{ book2.title }} </h5>
-                <p class="card-text">{{ book2.author }}</p>
-                <img src="{{ asset('divers/images/' ~ book2.bookcover) }}" class="img-fluid card-img-top" style="height:300px;" alt="image d'un livre" />
+                <p class="card-text text-truncate">{{ book2.author }}</p>
+                <img src="{{ asset('divers/images/' ~ book2.bookcover) }}" class="img-fluid card-img-top mb-2" style="height:300px;box-shadow: 10px 1px 10px;" alt="image d'un livre" />
                 <p class="card-text">{{ book2.editor }}</p>
                 <p class="card-text">{{ book2.nbPages }} page(s)</p>
                 <p class="card-text col-10 text-truncate">{{ book2.description }}</p>     
@@ -62,8 +62,8 @@
             <div class="card m-3" style="box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h5 class="card-title col-10 text-truncate">{{ book3.title }} </h5>
-                <p class="card-text">{{ book3.author }}</p>
-                <img src="{{ asset('divers/images/' ~ book3.bookcover) }}" class="img-fluid card-img-top" style="height:300px;" alt="image d'un livre" />
+                <p class="card-text text-truncate">{{ book3.author }}</p>
+                <img src="{{ asset('divers/images/' ~ book3.bookcover) }}" class="img-fluid card-img-top mb-2" style="height:300px;box-shadow: 10px 1px 10px;" alt="image d'un livre" />
                 <p class="card-text">{{ book3.editor }}</p>
                 <p class="card-text">{{ book3.nbPages }} page(s)</p>
                 <p class="card-text col-10 text-truncate">{{ book3.description }}</p>     
@@ -77,8 +77,8 @@
             <div class="card m-3" style="box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h5 class="card-title col-10 text-truncate">{{ book4.title }} </h5>
-                <p class="card-text">{{ book4.author }}</p>
-                <img src="{{ asset('divers/images/' ~ book4.bookcover) }}" class="img-fluid card-img-top" style="height:300px;" alt="image d'un livre" />
+                <p class="card-text text-truncate">{{ book4.author }}</p>
+                <img src="{{ asset('divers/images/' ~ book4.bookcover) }}" class="img-fluid card-img-top mb-2" style="height:300px;box-shadow: 10px 1px 10px;" alt="image d'un livre" />
                 <p class="card-text">{{ book4.editor }}</p>
                 <p class="card-text">{{ book4.nbPages }} page(s)</p>
                 <p class="card-text col-10 text-truncate">{{ book4.description }}</p>     
@@ -92,8 +92,8 @@
             <div class="card m-3" style="box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h5 class="card-title col-10 text-truncate">{{ book5.title }} </h5>
-                <p class="card-text">{{ book5.author }}</p>
-                <img src="{{ asset('divers/images/' ~ book5.bookcover) }}" class="img-fluid card-img-top" style="height:300px;" alt="image d'un livre" />
+                <p class="card-text text-truncate">{{ book5.author }}</p>
+                <img src="{{ asset('divers/images/' ~ book5.bookcover) }}" class="img-fluid card-img-top mb-2" style="height:300px;box-shadow: 10px 1px 10px;" alt="image d'un livre" />
                 <p class="card-text">{{ book5.editor }}</p>
                 <p class="card-text">{{ book5.nbPages }} page(s)</p>
                 <p class="card-text col-10 text-truncate">{{ book5.description }}</p>     

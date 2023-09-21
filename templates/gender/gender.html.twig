@@ -14,7 +14,8 @@
                 <div class="card-body">
                     <h5 class="card-title col-10 text-truncate">{{ genders.title }} </h5>
                     <p class="card-title col-10 text-truncate">{{ genders.author }} </p>
-                    <img src="{{ asset('divers/images/' ~ genders.bookcover) }}" class="img-fluid card-img-top"style="box-shadow: 10px 1px 10px;" alt="image d'un livre" />    
+                    <img src="{{ asset('divers/images/' ~ genders.bookcover) }}" class="img-fluid card-img-top"style="height:400px;box-shadow: 10px 1px 10px;" alt="image d'un livre" />    
+                    <a href="{{ path('showone', {'id':genders.id})}}" class="btn btn-primary mt-3">Lire +</a>
                 </div>
             </div>
             {% endfor %}
@@ -28,7 +29,8 @@
                 <div class="card-body">
                     <h5 class="card-title col-10 text-truncate">{{ genders1.title }} </h5>
                     <p class="card-title col-10 text-truncate">{{ genders1.author }} </p>
-                    <img src="{{ asset('divers/images/' ~ genders1.bookcover) }}" class="img-fluid card-img-top"style="box-shadow: 10px 1px 10px;" alt="image d'un livre" />
+                    <img src="{{ asset('divers/images/' ~ genders1.bookcover) }}" class="img-fluid card-img-top"style="height:400px;box-shadow: 10px 1px 10px;" alt="image d'un livre" />
+                    <a href="{{ path('showone', {'id':genders1.id})}}" class="btn btn-primary mt-3">Lire +</a>
                 </div>
             </div>
             {% endfor %}
@@ -42,7 +44,8 @@
                 <div class="card-body">
                     <h5 class="card-title col-10 text-truncate">{{ genders2.title }} </h5>
                     <p class="card-title col-10 text-truncate">{{ genders2.author }} </p>
-                    <img src="{{ asset('divers/images/' ~ genders2.bookcover) }}" class="img-fluid card-img-top"style="box-shadow: 10px 1px 10px;" alt="image d'un livre" />
+                    <img src="{{ asset('divers/images/' ~ genders2.bookcover) }}" class="img-fluid card-img-top"style="height:400px;box-shadow: 10px 1px 10px;" alt="image d'un livre" />
+                    <a href="{{ path('showone', {'id':genders2.id})}}" class="btn btn-primary mt-3">Lire +</a>
                 </div>
             </div>
             {% endfor %}
