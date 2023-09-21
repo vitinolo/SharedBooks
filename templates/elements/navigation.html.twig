@@ -1,22 +1,22 @@
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container">
-      <a class="navbar-brand" href="{{ path('app_book') }}">&ensp;Let's Go to...</a>
+      <a class="navbar-brand" href="{{ path('app_book') }}" title="retour à l'accueil" aria-label="back" style="font-size:25px">&ensp;Let's Go to...</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse " id="navbarColor01">
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav me-auto" style="font-size:25px">
             <li class="nav-item">
-              <a class="nav-link" href="{{ path('app_book') }}">Home</a>
+              <a class="nav-link" href="{{ path('app_book') }}" title="retour à l'accueil" aria-label="home">Home</a>
             </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('library') }}">Libraries</a>
+            <a class="nav-link" href="{{ path('library') }}" title="vers les librairies" aria-label="librairies">Libraries</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ path('gender') }}">Genders</a>
+            <a class="nav-link" href="{{ path('gender') }}" title="vers les genres" aria-label="genre">Genders</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#" title="vers à propos" aria-label="à propos">About</a>
           </li>
         </ul>
       </div>
