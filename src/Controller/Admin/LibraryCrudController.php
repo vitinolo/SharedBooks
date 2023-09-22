@@ -34,7 +34,6 @@ class LibraryCrudController extends AbstractCrudController
             ->setBasePath('divers/images')
             ->setSortable(false)
             ->setFormTypeOption('required',false)->setColumns('col-md-2'),
-            TextField::new('nblivre'),
             AssociationField::new('fkusers'),
             DateField::new('createdAt')->onlyOnIndex(),
         ];

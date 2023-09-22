@@ -41,7 +41,7 @@ security:
         - { path: '^/admin/', roles: ROLE_SUPER_ADMIN }
         - { path: '^/admin/', roles: ROLE_ADMIN }
         - { path: '^/admin/library/', roles: ROLE_EDITOR }
-        - { path: '^/library', roles: ROLE_USER }
+        - { path: '^/libraries', roles: ROLE_USER }
         - { path: '^/gender', roles: ROLE_USER }
 
     role_hierarchy:

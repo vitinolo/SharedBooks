@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %} 
-{% block title %}Hello MyLybrary!{% endblock %} 
+{% block title %}Libraries!{% endblock %} 
 {% block body %}
 <div class="container">
     <div class="row mt-3 mb-3">
@@ -14,7 +14,9 @@
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library.name }} </h2>
                 <div class="col-md-6"><img src="{{ asset('divers/images/' ~ library.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="image librairie" /></div>
-                <p class="card-text">{{ library.nblivre }} livre(s)</p>         
+                {# affichage du nombre exact de livre dans bibliothèque #}
+                {% set bookCount = library.books|length %}
+                <p class="card-text">{{ bookCount }} livre(s)</p>      
                 <a href="{{ path('library_detail', {'id':library.id})}}" class="btn btn-primary">Visiter</a>
                 </div>
             </div>
@@ -26,7 +28,8 @@
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library1.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library1.image) }}" class="img-fluid card-img-top mb-2"  style="height:200px;" alt="" />
-                <p class="card-text">{{ library1.nblivre }} livre(s)</p>
+                {% set bookCount = library1.books|length %}
+                <p class="card-text">{{ bookCount }} livre(s)</p>   
                 <a href="{{ path('library_detail', {'id':library1.id})}}" class="btn btn-primary">Visiter</a>
                 </div>
             </div>
@@ -38,7 +41,8 @@
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library2.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library2.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="" />
-                <p class="card-text">{{ library2.nblivre }} livre(s)</p>
+                {% set bookCount = library2.books|length %}
+                <p class="card-text">{{ bookCount }} livre(s)</p>   
                 <a href="{{ path('library_detail', {'id':library2.id})}}" class="btn btn-primary">Visiter</a>
                 </div>
             </div>
@@ -52,7 +56,8 @@
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library3.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library3.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="" />
-                <p class="card-text">{{ library3.nblivre }} livre(s)</p>
+                {% set bookCount = library3.books|length %}
+                <p class="card-text">{{ bookCount }} livre(s)</p>   
                 <a href="{{ path('library_detail', {'id':library3.id})}}" class="btn btn-primary">Visiter</a>
                 </div>
             </div>
@@ -64,7 +69,8 @@
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library4.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library4.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="" />
-                <p class="card-text">{{ library4.nblivre }} livre(s)</p>
+                {% set bookCount = library4.books|length %}
+                <p class="card-text">{{ bookCount }} livre(s)</p>   
                 <a href="{{ path('library_detail', {'id':library4.id})}}" class="btn btn-primary">Visiter</a>
                 </div>
             </div>
@@ -76,7 +82,8 @@
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library5.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library5.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="" />
-                <p class="card-text">{{ library5.nblivre }} livre(s)</p>
+                {% set bookCount = library5.books|length %}
+                <p class="card-text">{{ bookCount }} livre(s)</p>   
                 <a href="{{ path('library_detail', {'id':library5.id})}}" class="btn btn-primary">Visiter</a>
                 </div>
             </div>

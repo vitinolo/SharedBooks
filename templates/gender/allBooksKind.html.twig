@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="my-4">Search Results for Genre: {{ kindName }}</h1>
+
+    <div class="row mt-3 mb-3">
+        {% if books is empty %}
+            <div class="col-md-12">
+                <p>No books found for the selected genre.</p>
+            </div>
+        {% else %}
+            {% for book in books %}
+                <div class="col-md-3">
+                    <div class="card m-3" style="box-shadow: 1px 1px 1px;">
+                        <div class="card-body">
+                            <h2 class="card-title col-10 text-truncate fs-4">{{ book.title }}</h2>
+                            <p class="card-text text-truncate">{{ book.author }}</p>
+                            <img src="{{ asset('divers/images/' ~ book.bookcover) }}" class="img-fluid card-img-top mb-2" style="height:300px;box-shadow: 10px 1px 10px;" alt="" />
+                            <p class="card-text">{{ book.editor }}</p>
+                            <p class="card-text">{{ book.nbPages }} page(s)</p>
+                            <p class="card-text col-10 text-truncate">{{ book.description }}</p>
+                            <a href="{{ path('showone', {'id': book.id}) }}" class="btn btn-primary">Lire +</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

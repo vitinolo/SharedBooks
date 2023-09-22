@@ -7,13 +7,14 @@ use App\Repository\BookRepository;
 use App\Repository\GenderRepository; 
 use App\Repository\LibraryRepository; 
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LibraryController extends AbstractController
 {   
-  //affichage des livres (accueil) de façon fluide
+  //route et affichage des livres (accueil) de façon fluide
     #[Route('/', name: 'app_book')]
     public function index(BookRepository $repo): Response
     {    
@@ -33,7 +34,7 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    //affichage d'un livre
+    //route et affichage d'un livre
     #[Route('/{id}', name: 'showone', requirements:['id'=>'\d+'])]
     public function showOne($id, BookRepository $repo, EntityManagerInterface $em ){
       //1. récupèrer la librairie à afficher en utilisant l'id
@@ -48,8 +49,8 @@ class LibraryController extends AbstractController
       ]);
     }
 
-    //afficahge des librairies
-    #[Route('/library', name: 'library')]
+    //route et affichage des librairies
+    #[Route('/libraries', name: 'library')]
     public function library(LibraryRepository $repo): Response
     {
         
@@ -59,7 +60,7 @@ class LibraryController extends AbstractController
         $library3 = $repo->findBy([], ['createdAt' => 'DESC'], 3,3);
         $library4 = $repo->findBy([], ['createdAt' => 'DESC'], 3,6);
         $library5 = $repo->findBy([], ['createdAt' => 'DESC'], 3,9);
-        return $this->render('library/library.html.twig', [
+        return $this->render('libraries/libraries.html.twig', [
             'library' => $library,
             'library1'=> $library1,
             'library2'=> $library2,
@@ -68,7 +69,23 @@ class LibraryController extends AbstractController
             'library5'=> $library5,
         ]);
     }
-    //affichage des livres d'une librairie
+
+    // Route pour la recherche de bibliothèque par nom
+    #[Route('/search/library', name: 'search_library')]
+    public function searchLibrary(Request $request, LibraryRepository $libraryRepository): Response
+    {
+        $libraryName = $request->query->get('library_name');
+
+        // Utilisez le Repository pour rechercher des bibliothèques par nom
+        $libraries = $libraryRepository->findByName($libraryName);
+
+        return $this->render('showlibrary/findOneLibrary.html.twig', [
+            'libraries' => $libraries,
+            'search_query' => $libraryName,
+        ]);
+    }
+  
+    // route et affichage des livres d'une librairie
     #[Route('/library/{id}', name: 'library_detail', requirements: ['id' => '\d+'])]
     public function showLibraryBooks($id, LibraryRepository $libraryRepository): Response
     {
@@ -91,12 +108,12 @@ class LibraryController extends AbstractController
           ]);
         } 
         // Afficher la vue avec les livres de la bibliothèque
-        $library1 = $libraryRepository->findAll([], ['createdAt' => 'DESC']);
-        $library2 = $libraryRepository->findAll([], ['createdAt' => 'DESC']);
-        $library3 = $libraryRepository->findAll([], ['createdAt' => 'DESC']);
-        $library4 = $libraryRepository->findAll([], ['createdAt' => 'DESC']);
-        $library5 = $libraryRepository->findAll([], ['createdAt' => 'DESC']);
-        return $this->render('showlibrary/showlibrary.html.twig', [
+        $library1 = $libraryRepository->findBy([], ['createdAt' => 'DESC']);
+        $library2 = $libraryRepository->findBy([], ['createdAt' => 'DESC']);
+        $library3 = $libraryRepository->findBy([], ['createdAt' => 'DESC']);
+        $library4 = $libraryRepository->findBy([], ['createdAt' => 'DESC']);
+        $library5 = $libraryRepository->findBy([], ['createdAt' => 'DESC']);
+        return $this->render('showlibrary/showlibraryBooks.html.twig', [
             'library' => $library,
             'library1' => $library1,
             'library2' => $library2,
@@ -107,7 +124,7 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    //affichage des livres par genre
+    //route et affichage des livres par genre
     #[Route('/gender', name: 'gender')]
     public function gender( BookRepository $repo): Response
     {
@@ -121,6 +138,25 @@ class LibraryController extends AbstractController
             'genders2' => $genders2,
             
         ]);
+    }
+    #[Route('/search-books-by-kind', name: 'search_books_by_kind')]
+    public function searchBooksByKind(Request $request, BookRepository $repo): Response
+    {
+        // Récupérer le nom du genre depuis la requête GET
+        $kindName = $request->query->get('gender_name');
+
+        // Rechercher les livres par genre
+        $books = $repo->findBy(['fkgenders' => $fkgenders]);
+
+        return $this->render('gender/allBooksKind.html.twig', [
+            'fkgenders' => $fkgenders,
+            'books' => $books,
+        ]);
+    }
+    //route et affichage du about
+    #[Route('/about', name: 'about')]
+    public function about(): Response{
+        return $this->render('about/about.html.twig');
     }
 
 }

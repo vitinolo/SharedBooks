@@ -12,12 +12,12 @@
                 <div class="col-md-4 d-flex justify-content-center fw-bold mt-2 fs-5">
                     Le {{ 'now'|date('d - m -Y') }}
                 </div>
-                <h1 class="col-md-4 d-flex justify-content-center fw-bold fs-1 mt-3" >
+                <h1 class="col-md-4 d-flex justify-content-center fw-bold fs-1 mt-3">
                     <a class="nav-link" href="{{ path('app_book') }}" title="retour à l'accueil">SharedBooks</a>
                 </h1>
                 <div class="col-md-4">
                   {% if app.user %}
-                      <div class="col-md-12 d-flex justify-content-center mt-3 fs-5"><span>Bonjour {{ app.user.firstName }} {{ app.user.lastName }} !</span></div>
+                      <div class="col-md-12 d-flex justify-content-center mt-3 fs-5"><span>Hi {{ app.user.firstName }} {{ app.user.lastName }} !</span></div>
                 </div>
             </div>
             <div class="row">

@@ -19,9 +19,6 @@ class Library
     #[ORM\Column(length: 20)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
-    private ?string $nblivre = null;
-
     #[ORM\Column(type: 'datetime_immutable', options: ['default'=>'CURRENT_TIMESTAMP'])]
     #[Gedmo\Timestampable(on:'create')]
     private ?\DateTimeImmutable $createdAt = null;
@@ -56,18 +53,6 @@ class Library
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getNblivre(): ?string
-    {
-        return $this->nblivre;
-    }
-
-    public function setNblivre(?string $nblivre): static
-    {
-        $this->nblivre = $nblivre;
 
         return $this;
     }
