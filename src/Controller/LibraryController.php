@@ -139,6 +139,7 @@ class LibraryController extends AbstractController
             
         ]);
     }
+    
     #[Route('/search-books-by-kind', name: 'search_books_by_kind')]
     public function searchBooksByKind(Request $request, BookRepository $repo): Response
     {
@@ -153,6 +154,7 @@ class LibraryController extends AbstractController
             'books' => $books,
         ]);
     }
+    
     //route et affichage du about
     #[Route('/about', name: 'about')]
     public function about(): Response{
