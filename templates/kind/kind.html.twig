@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AllBooksKind{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-3 mb-3">   
+        <div class="col-md-4">
+            <div class="col-md-4 fs-3" style="margin-left:20px;">Policier</div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            {% for kinds in kinds %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px;">
+                <div class="card-body">
+                    <h2 class="card-title col-10 text-truncate fs-4">{{ kinds.title }} </h2>
+                    <p class="card-title col-10 text-truncate">{{ kinds.author }} </p>
+                    <img src="{{ asset('divers/images/' ~ kinds.bookcover) }}" class="img-fluid card-img-top"style="height:400px;box-shadow: 10px 1px 10px;" alt="" />    
+                    <a href="{{ path('showone', {'id':kinds.id})}}" class="btn btn-primary mt-3">Lire +</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>  
+        <div class="col-md-4">
+            <div class="col-md-4 fs-3" style="margin-left:20px;">Aventure</div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            {% for kinds1 in kinds1 %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px;">
+                <div class="card-body">
+                    <h2 class="card-title col-10 text-truncate fs-4">{{ kinds1.title }} </h2>
+                    <p class="card-title col-10 text-truncate">{{ kinds1.author }} </p>
+                    <img src="{{ asset('divers/images/' ~ kinds1.bookcover) }}" class="img-fluid card-img-top"style="height:400px;box-shadow: 10px 1px 10px;" alt="" />
+                    <a href="{{ path('showone', {'id':kinds1.id})}}" class="btn btn-primary mt-3">Lire +</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>  
+        <div class="col-md-4">
+            <div class="col-md-4 fs-3" style="margin-left:20px;">Théatre</div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            {% for kinds2 in kinds2 %}
+            <div class="card m-3" style="box-shadow: 1px 1px 1px;">
+                <div class="card-body">
+                    <h2 class="card-title col-10 text-truncate fs-4">{{ kinds2.title }} </h2>
+                    <p class="card-title col-10 text-truncate">{{ kinds2.author }} </p>
+                    <img src="{{ asset('divers/images/' ~ kinds2.bookcover) }}" class="img-fluid card-img-top"style="height:400px;box-shadow: 10px 1px 10px;" alt="" />
+                    <a href="{{ path('showone', {'id':kinds2.id})}}" class="btn btn-primary mt-3">Lire +</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>  
+    </div> 
+</div>
+{% endblock %}

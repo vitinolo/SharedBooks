@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Entity\Book;
-use App\Entity\Gender;
+use App\Entity\Kind;
 use App\Entity\Library;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -59,10 +59,10 @@ class DashboardController extends AbstractDashboardController
             ]);
         }
         if ($this->isGranted('ROLE_ADMIN')){
-            yield MenuItem::section('Genders');
-            yield MenuItem::subMenu('Genders', 'fa-solid fa-sort')->setSubItems([
-                MenuItem::linkToCrud('Create Gender', 'fas fa-plus-circle', Gender::class)->setAction(Crud::PAGE_NEW),
-                MenuItem::linkToCrud('Show Gender', 'fas fa-eye', Gender::class),
+            yield MenuItem::section('Kinds');
+            yield MenuItem::subMenu('Kinds', 'fa-solid fa-sort')->setSubItems([
+                MenuItem::linkToCrud('Create Kind', 'fas fa-plus-circle', Kind::class)->setAction(Crud::PAGE_NEW),
+                MenuItem::linkToCrud('Show Kind', 'fas fa-eye', Kind::class),
             ]);
         }
     }

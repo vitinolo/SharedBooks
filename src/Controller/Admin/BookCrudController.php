@@ -28,7 +28,7 @@ class BookCrudController extends AbstractCrudController
         return [
             IntegerField::new('id')->onlyOnIndex(),
             AssociationField::new('fklibraries'),
-            AssociationField::new('fkgenders'),
+            AssociationField::new('fkkinds'),
             TextField::new('isbn'),
             TextField::new('title'),
             TextField::new('author'),

@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\GenderRepository;
+use App\Repository\KindRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
-#[ORM\Entity(repositoryClass: GenderRepository::class)]
-class Gender
+#[ORM\Entity(repositoryClass: KindRepository::class)]
+class Kind
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -19,7 +19,7 @@ class Gender
     #[ORM\Column(length: 20)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'fkgenders', targetEntity: Book::class)]
+    #[ORM\OneToMany(mappedBy: 'fkkinds', targetEntity: Book::class)]
     private Collection $books;
 
     public function __construct()
@@ -60,7 +60,7 @@ class Gender
     {
         if (!$this->books->contains($book)) {
             $this->books->add($book);
-            $book->setFkgenders($this);
+            $book->setFkkinds($this);
         }
 
         return $this;
@@ -70,8 +70,8 @@ class Gender
     {
         if ($this->books->removeElement($book)) {
             // set the owning side to null (unless already changed)
-            if ($book->getFkgenders() === $this) {
-                $book->setFkgenders(null);
+            if ($book->getFkkinds() === $this) {
+                $book->setFkkinds(null);
             }
         }
 

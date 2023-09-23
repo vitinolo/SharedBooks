@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Repository\BookRepository; 
-use App\Repository\GenderRepository; 
+use App\Repository\KindRepository; 
 use App\Repository\LibraryRepository; 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -125,33 +125,33 @@ class LibraryController extends AbstractController
     }
 
     //route et affichage des livres par genre
-    #[Route('/gender', name: 'gender')]
-    public function gender( BookRepository $repo): Response
+    #[Route('/kind', name: 'kind')]
+    public function kind( BookRepository $repo): Response
     {
         // Récupérer les genres associés aux livres
-        $genders = $repo->findBy(['fkgenders'=>'1'], [], 4);
-        $genders1 = $repo->findBy(['fkgenders'=>'2'], [], 4);
-        $genders2 = $repo->findBy(['fkgenders'=>'3'], [], 4);
-        return $this->render('gender/gender.html.twig', [
-            'genders' => $genders,
-            'genders1' => $genders1,
-            'genders2' => $genders2,
+        $kinds = $repo->findBy(['fkkinds'=>'1'], [], 4);
+        $kinds1 = $repo->findBy(['fkkinds'=>'2'], [], 4);
+        $kinds2 = $repo->findBy(['fkkinds'=>'3'], [], 4);
+        return $this->render('kind/kind.html.twig', [
+            'kinds' => $kinds,
+            'kinds1' => $kinds1,
+            'kinds2' => $kinds2,
             
         ]);
     }
     
     #[Route('/search-books-by-kind', name: 'search_books_by_kind')]
-    public function searchBooksByKind(Request $request, BookRepository $repo): Response
+    public function searchBooksByKind(Request $request, KindRepository $repo): Response
     {
         // Récupérer le nom du genre depuis la requête GET
-        $kindName = $request->query->get('gender_name');
+        $kindName = $request->query->get('kind_name');
 
         // Rechercher les livres par genre
-        $books = $repo->findBy(['fkgenders' => $fkgenders]);
+        $books = $repo->findAll( ['fkkinds'],$kindName);
 
-        return $this->render('gender/allBooksKind.html.twig', [
-            'fkgenders' => $fkgenders,
+        return $this->render('kind/allBooksKind.html.twig', [
             'books' => $books,
+            'search_query' => $kindName,
         ]);
     }
     

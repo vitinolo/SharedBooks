@@ -1,29 +1,33 @@
 {% extends 'base.html.twig' %} 
-{% block title %}Library!{% endblock %} 
+{% block title %}FindOneLibrary!{% endblock %} 
 {% block body %}
-<div class="container" style="height:70vh">
-    <div class="row mt-3 mb-3">
-        <div class="row ">
-            <div class="col-md-4 fs-3">&nbsp; Librairie...</div>
+<div class="container" style="height:100vh">
+    <div class="row mt-3">
+        <div class="row m-5">
             <div class="col-md-4"></div>
+            <div class="col-md-4 fs-3 mb-4">&nbsp; Librairie...</div>
             <div class="col-md-4"></div>
         </div>
-        <div class="col-md-6">
-            {% if libraries is empty %}
-        <p>No libraries found for "{{ search_query }}".</p>
-    {% else %}
-        <p>Found {{ libraries|length }} libraries matching "{{ search_query }}":</p>
-        <ul>
-            {% for library in libraries %}
-                <li>
-                    <a href="{{ path('library_detail', {'id': library.id}) }}">{{ library.name }}</a>
-                    ({{ library.books|length }} livre(s))
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    
-    <p><a href="{{ path('library') }}">Back to Libraries</a></p>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"> {% if libraries is empty %}
+                <p>No libraries found for "{{ search_query }}".</p>
+                {% else %}
+                    <p class="mb-4">{{ libraries|length }} librairie(s) trouvée(s) au nom de "{{ search_query }}":</p>
+                    <ul class="mb-4">
+                        {% for library in libraries %}
+                            <li>
+                                La librairie de 
+                                <a href="{{ path('library_detail', {'id': library.id}) }}" title="cliquer pour voir les livres" aria-label="voir les livres">{{ library.name }}</a>
+                                comporte ({{ library.books|length }}) livre(s)
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <p><a href="{{ path('library') }}" title="retour aux librairies" aria-label="retour aux librairies">Retour vers Librairies</a></p>
+            </div>
+            <div class="col-md-4"></div>
+           
         </div>      
     </div>
 </div>

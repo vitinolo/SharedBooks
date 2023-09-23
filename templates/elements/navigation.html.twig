@@ -7,16 +7,16 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mx-auto" style="font-size:25px">
             <li class="nav-item me-5">
-              <a class="nav-link" href="{{ path('app_book') }}" title="retour à l'accueil" aria-label="home">Home</a>
+              <a class="nav-link" href="{{ path('app_book') }}" title="retour à l'accueil" aria-label="home">Accueil</a>
             </li>
           <li class="nav-item me-5">
-            <a class="nav-link" href="{{ path('library') }}" title="vers les librairies" aria-label="librairies">Libraries</a>
+            <a class="nav-link" href="{{ path('library') }}" title="vers les librairies" aria-label="librairies">Librairies</a>
           </li>
           <li class="nav-item me-5">
-            <a class="nav-link" href="{{ path('gender') }}" title="vers les genres" aria-label="genre">Kind</a>
+            <a class="nav-link" href="{{ path('kind') }}" title="vers les genres" aria-label="genre">Genre</a>
           </li>
           <li class="nav-item me-5">
-            <a class="nav-link" href="{{ path('about') }}" title="vers à propos" aria-label="à propos">About</a>
+            <a class="nav-link" href="{{ path('about') }}" title="vers à propos" aria-label="à propos">A propos</a>
           </li>
         </ul>
         {% if app.request.attributes.get('_route') == 'app_book' %}
@@ -25,11 +25,11 @@
             <input class="form-control me-sm-2" type="search" placeholder="Find a library" name="library_name">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
           </form>
-        {% elseif app.request.attributes.get('_route') == 'gender' %}
+        {# {% elseif app.request.attributes.get('_route') == 'kind' %}
           <form class="d-flex" method="GET" action="{{ path('search_books_by_kind') }}">
             <input class="form-control me-sm-2" type="search" placeholder="Find all books of kind" name="kind_name">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          </form> #}
         {% elseif app.request.attributes.get('_route') == 'about'%}
           
         {% endif %}

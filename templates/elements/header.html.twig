@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="container-fluid">
-        <div class="row header mb-3">
+        <div class="row header p-2">
             
             <div class="col-md-4 d-flex justify-content-center fw-bold mt-2 fs-5">
                 Le {{ 'now'|date('d - m -Y') }}
@@ -21,14 +21,14 @@
                         <div class="col-md-3 d-flex justify-content-center mt-3"><a href="{{ path('app_logout') }}" title="se déconnecter" aria-label="se déconnecter">
                             <i class="fa-solid fa-right-from-bracket fa-xl" style="color:black;"></i></a>
                         </div>
-                        <div class="col-md-6 d-flex justify-content-center mt-3 fs-5"><span>Hi {{ app.user.firstName }} {{ app.user.lastName }} !</span></div>
+                        <div class="col-md-6 d-flex justify-content-center mt-3 fs-5"><span>Bonjour {{ app.user.firstName }} {{ app.user.lastName }}!</span></div>
                         {% if is_granted('ROLE_EDITOR') in app.user.roles %}
                             <div class="col-md-3 d-flex justify-content-center mt-3">
                                 <a href="{{ path('admin') }}" title="vers dashboard" aria-label="vers dashboard"><i class="fa-solid fa-gear fa-xl" style="color:black;"></i></a>
                             </div>
                         {% endif %}
                         {% else %}
-                        <div class="col-md-3 d-flex justify-content-end mt-4 shake-horizontal" style="color:black;">
+                        <div class="col-md-3 d-flex justify-content-end mt-4 mx-auto shake-horizontal" style="color:black;">
                             <a href="{{ path('app_login') }}" title="se connecter" aria-label="se connecter">
                                 <i class="fa-solid fa-circle-user fa-2x" style="color:black;"></i>
                             </a>

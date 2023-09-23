@@ -55,7 +55,7 @@ class Book
 
     #[ORM\ManyToOne(inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Gender $fkgenders = null;
+    private ?Kind $fkkinds = null;
 
     public function getId(): ?int
     {
@@ -208,14 +208,14 @@ class Book
         return $this;
     }
 
-    public function getFkgenders(): ?Gender
+    public function getFkkinds(): ?Kind
     {
-        return $this->fkgenders;
+        return $this->fkkinds;
     }
 
-    public function setFkgenders(?Gender $fkgenders): static
+    public function setFkkinds(?Kind $fkkinds): static
     {
-        $this->fkgenders = $fkgenders;
+        $this->fkkinds = $fkkinds;
 
         return $this;
     }
