@@ -9,38 +9,14 @@
         <div class="form_row" >
             <h1 class="d-flex justify-content-center">Please sign up</h1>
             <div class="errorsRegistrationForm">
-                {{ form_errors(registrationForm) }}
-            </div>
-            <div class="row"> 
-                <div class="col-md-4 d-flex justify-content-center">{{ form_row(registrationForm.firstname) }}</div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 d-flex justify-content-center">{{ form_row(registrationForm.lastname) }}</div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 d-flex justify-content-center">{{ form_row(registrationForm.email) }}</div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 d-flex justify-content-center">{{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}</div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-2 ">{{ form_row(registrationForm.agreeTerms) }}</div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"></div>
+                {{ form_errors(registrationForm) }}          
+                {{ form_row(registrationForm.firstname) }}
+                {{ form_row(registrationForm.lastname) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
+                {{ form_row(registrationForm.agreeTerms) }}  
                 <button type="submit" class="btn btn-primary col-md-4">Register</button>
-                <div class="col-md-4"></div>
-            </div>               
+            </div>
         </div>
         {{ form_end(registrationForm) }}
     </div>    
