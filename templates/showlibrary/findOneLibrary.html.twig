@@ -10,7 +10,8 @@
         </div>
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4"> {% if libraries is empty %}
+            <div class="col-md-4">
+                {% if libraries is empty %}
                 <p>No libraries found for "{{ search_query }}".</p>
                 {% else %}
                     <p class="mb-4">{{ libraries|length }} librairie(s) trouvée(s) au nom de "{{ search_query }}":</p>

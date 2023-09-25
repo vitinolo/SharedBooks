@@ -25,11 +25,6 @@
             <input class="form-control me-sm-2" type="search" placeholder="Find a library" name="library_name">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
           </form>
-        {# {% elseif app.request.attributes.get('_route') == 'kind' %}
-          <form class="d-flex" method="GET" action="{{ path('search_books_by_kind') }}">
-            <input class="form-control me-sm-2" type="search" placeholder="Find all books of kind" name="kind_name">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-          </form> #}
         {% elseif app.request.attributes.get('_route') == 'about'%}
           
         {% endif %}
