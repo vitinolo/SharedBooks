@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-primary mt-2" data-bs-theme="dark">
     <div class="container">
-      <a class="navbar-brand" href="{{ path('app_book') }}" title="retour à l'accueil" aria-label="back" style="font-size:25px">&ensp;Let's Go to...</a>
+      <a class="navbar-brand" href="{{ path('app_book') }}" title="retour à l'accueil" aria-label="back" style="font-size:25px">&ensp;Naviguer vers...</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,8 +22,8 @@
         {% if app.request.attributes.get('_route') == 'app_book' %}
         {% elseif app.request.attributes.get('_route') == 'library' %}
           <form class="d-flex" method="GET" action="{{ path('search_library') }}">
-            <input class="form-control me-sm-2" type="search" placeholder="Find a library" name="library_name">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="margin-left: 5px">Search</button>
+            <input class="form-control me-sm-2" type="search" placeholder="Trouver une librairie" name="library_name">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="margin-left: 5px">Rechercher</button>
           </form>
         {% elseif app.request.attributes.get('_route') == 'about'%}
           

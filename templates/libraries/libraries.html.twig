@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %} 
 {% block title %}Libraries!{% endblock %} 
 {% block body %}
-<div class="container">
-    <div class="row mt-3 mb-3">
+<div class="container p-3">
+    <div class="row">
         <div class="row">
             <div class="col-md-4 fs-3">&nbsp; Librairies...</div>
             <div class="col-md-4"></div>
@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-6">
             {% for library in library %}
-            <div class="card m-3" style=" box-shadow: 1px 1px 1px">
+            <div class="card mb-3" style=" box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library.name }} </h2>
                 <div class="col-md-6"><img src="{{ asset('divers/images/' ~ library.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="image librairie" /></div>
@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-3">
             {% for library1 in library1 %}
-            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+            <div class="card mb-3" style="box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library1.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library1.image) }}" class="img-fluid card-img-top mb-2"  style="height:200px;" alt="" />
@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-3">
             {% for library2 in library2 %}
-            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+            <div class="card mb-3" style="box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library2.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library2.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="" />
@@ -49,10 +49,10 @@
             {% endfor %}
         </div>      
     </div>
-    <div class="row mt-3 mb-3 dd-flex justify-content-center">
+    <div class="row d-flex justify-content-center">
         <div class="col-md-4">
             {% for library3 in library3 %}
-            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+            <div class="card mb-3" style="box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library3.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library3.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="" />
@@ -65,7 +65,7 @@
         </div>
         <div class="col-md-4">
             {% for library4 in library4 %}
-            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+            <div class="card mb-3" style="box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library4.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library4.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="" />
@@ -78,7 +78,7 @@
         </div>
         <div class="col-md-4">
             {% for library5 in library5 %}
-            <div class="card m-3" style="box-shadow: 1px 1px 1px">
+            <div class="card mb-3" style="box-shadow: 1px 1px 1px">
                 <div class="card-body">
                 <h2 class="card-title text-truncate fs-4">{{ library5.name }} </h2>
                 <img src="{{ asset('divers/images/' ~ library5.image) }}" class="img-fluid card-img-top mb-2" style="height:200px;" alt="" />
