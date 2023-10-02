@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Book;
+use App\Entity\Comment;
+use App\Form\CommentType;
 use App\Repository\BookRepository; 
-use App\Repository\KindRepository; 
+use App\Repository\KindRepository;
+use App\Repository\CommentRepository;  
 use App\Repository\LibraryRepository; 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,21 +35,6 @@ class LibraryController extends AbstractController
             'book4'=> $book4,
             'book5'=> $book5,
         ]);
-    }
-
-    //route et affichage d'un livre
-    #[Route('/{id}', name: 'showone', requirements:['id'=>'\d+'])]
-    public function showOne($id, BookRepository $repo, EntityManagerInterface $em ){
-      //1. récupèrer la librairie à afficher en utilisant l'id
-      $book = $repo->find($id);
-      //2. vérifier si le livre existe
-      if(!$book){
-        throw $this->createNotFoundException('le livre demandé n\existe pas');
-      } 
-      //3. on retourne la vue portant détail du livre
-      return $this->render('shows/show.html.twig',[
-        'book'=> $book,
-      ]);
     }
 
     //route et affichage des librairies
@@ -159,6 +147,45 @@ class LibraryController extends AbstractController
     #[Route('/about', name: 'about')]
     public function about(): Response{
         return $this->render('about/about.html.twig');
+    }
+
+    //route et affichage d'un livre
+    #[Route('/{id}', name: 'showone', requirements:['id'=>'\d+'])]
+    public function showOne($id, Book $book, BookRepository $repo, CommentRepository $crepo, EntityManagerInterface $em, Request $request ){
+        //0. vérifier si le livre existe
+        if(!$book){
+            throw $this->createNotFoundException('le livre demandé n\existe pas');
+        } 
+        //1. récupèrer le livre à afficher en utilisant l'id
+        $book = $repo->find($id);
+        $comments = new Comment();
+
+        //2.création du formulaire puis saisie
+        $form = $this->createForm(CommentType::class, $comments);
+        $form -> handleRequest($request);
+
+        //3. est ce que le formulaire à été envoyé et est valid ?
+        if($form -> isSubmitted() && $form -> isValid()){
+            $user = $this->getUser(); //récupérer le user
+            $comments->setUsers($user); //modifier le user
+            $user = $this->getUser();
+            $comments->setBooks($book);//modifier le book
+            //on va persister
+            $em -> persist($comments);
+            //on va écrire dans la base de donnée
+            $em -> flush();
+            // on passe un message
+            $this -> addFlash('success','votre commentaire à bien été enregistré !');
+            //on fait la redirection
+            return $this -> redirectToRoute('app_book');
+        }
+        //3. on retourne la vue portant détail du livre
+        return $this->render('shows/show.html.twig',[
+        'book'=> $book,
+        'comments'=> $crepo->findBy(['book'=> $book],['createdAt'=>'DESC']),
+        'form'=> $form -> createView(),
+        ]);
+    
     }
 
 }

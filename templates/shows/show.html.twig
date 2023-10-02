@@ -16,7 +16,41 @@
                     <p class="card-text">Depuis le: {{ book.lentDate }}</p>
                 </div>
             </div>
-            
+            <div class="d-flex justify-content-end">
+                {% if comments|length <1 %} <p>Il n'existe aucun commentaire pour cet article</p>
+                {% elseif comments|length == 1 %}
+                    {{ comments|length }} Commentaire
+                {% else %}
+                    {{ comments|length }} Commentaires
+                {% endif %}
+            </div>
+            {% if is_granted('ROLE_USER')%}
+                <div class="row">
+                    {{ form(form) }}
+                </div>
+            {% endif %}
+            <div class="row mt-5 d-flex justify-content-evenly">
+                {% for comment in comments %}
+                <div class="col-md-3 rounder bg-light m-3 shadow">
+                    {% if comment.users.avatar is empty %}
+                        <i class="fa fa-user"></i>
+                    {% else %}
+                        {{ comment.users.avatar }}
+                    {% endif %}
+                    <p>
+                        <small class="text-muted">
+                            "{{ comment.content }}"
+                        </small>
+                    </p>
+                    <p class="text-end">
+                        <small class="text-muted">
+                            Par {{ comment.users.firstname }} le {{ comment.createdAt|date('d/m/Y') }} à {{
+                            comment.createdAt|date('H:i') }}
+                        </small>
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
