@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Book;
 use App\Entity\Kind;
 use App\Entity\Library;
+use App\Entity\Comment;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -63,6 +64,12 @@ class DashboardController extends AbstractDashboardController
             yield MenuItem::subMenu('Kinds', 'fa-solid fa-sort')->setSubItems([
                 MenuItem::linkToCrud('Create Kind', 'fas fa-plus-circle', Kind::class)->setAction(Crud::PAGE_NEW),
                 MenuItem::linkToCrud('Show Kind', 'fas fa-eye', Kind::class),
+            ]);
+        }
+        if ($this->isGranted('ROLE_ADMIN')){
+            yield MenuItem::section('Comments');
+            yield MenuItem::subMenu('Comments', 'fa-solid fa-comment')->setSubItems([
+                  MenuItem::linkToCrud('Show Comment', 'fas fa-eye', Comment::class),
             ]);
         }
     }

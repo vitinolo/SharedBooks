@@ -1,43 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Books!{% endblock %}
+{% block title %}About{% endblock %}
 
 {% block body %}
     <div class="container p-3">
-        <h2>Les lecteurs réguliers font souvent le même constat:
-            <br>Ils ne se souviennent plus s'ils possédent tel ou tel livre.
-            <br>Une fois lus les livres prennent la poussière.
-            <br>Ils aimeraient partager leurs lectures et pouvoir lire le dernier roman de leur auteur 
-                préféré, sans forcément l'acheter.
-        </h2>
+        <h2>Les lecteurs réguliers font souvent le même constat :</h2>
+        <br>
+        <p>
+            Ils ne se souviennent plus s'ils possédent tel ou tel livre.
+            <br>Une fois lus, les livres prennent la poussière.
+            <br>Ils aiment partager et échanger leurs lectures.
+            <br>Ils souhaitent lire le dernier roman de leur auteur 
+            préféré, sans forcément l'acheter.
+        </p>
+        <br>
         <hr>
-        <h3>SharedBooks vous permet:</h3>
-        <ul class="row pb-4 bg-dark-subtle p-2">
-            <li>d'inventorier vos livres dans votre bibliothèque virtuelle.</li>
-            <li>de partager votre bibliothèque en la rendant visible aux yeux des autres lecteurs.</li>
-            <li>de rechercher une bibliothèque par son nom.</li>
-            <li>de visualiser la bibliothèque d'autres collectionneurs et du coût favoriser l'emprunt.</li>
-            <li>de savoir à qui et quand vous avez prêté un livre.</li>
+        <br>
+        <h2>SharedBooks vous permet :</h2>
+        <ul class="row pb-4 p-2 list-unstyled">
+            <li>-d'inventorier vos livres dans votre bibliothèque virtuelle.</li>
+            <li>-de partager votre bibliothèque en la rendant visible aux yeux des autres lecteurs.</li>
+            <li>-de rechercher une bibliothèque par son nom.</li>
+            <li>-de visualiser la bibliothèque d'autres collectionneurs et du coût favoriser l'emprunt.</li>
+            <li>-de savoir à qui et quand vous avez prêté un livre.</li>
         </ul>
-        <h4>Vous n'êtes pas enregistré, vous pouvez:</h4>
-        <ul class="row pb-4 bg-dark-subtle p-2">
-            <li>Consulter la page accueil et voir les livres derniers livres ajoutés.</li>
-            <li>Vous enregistrer puis vous connecter via l'icône suivant =>
+        <h3>Vous n'êtes pas enregistré, vous pouvez :</h3>
+        <ul class="row pb-4 p-2 list-unstyled">
+            <li>-consulter la page accueil et voir les derniers livres ajoutés ainsi que leur(s) commentaire(s).</li>
+            <li>-vous enregistrer puis vous connecter via l'icône suivant =>
                 <i class="fa-solid fa-circle-user" style="color:black;"></i>.
             </li>
         </ul>
-        <h4>Vous êtes désormais enregistré  et connecté, vous pouvez:</h4>
-        <ul  class="row pb-4 bg-dark-subtle p-2">
-            <li>Voir les librairies.</li>
-            <li>Voir la catégorie genre.</li>
-            <li>Rechercher une librairie par son nom.</li>
-            <li>Voir les livres qui la composent.</li>
+        <h3>Vous êtes désormais enregistré  et connecté, vous pouvez :</h3>
+        <ul  class="row pb-4 p-2 list-unstyled">
+            <li>-voir les librairies.</li>
+            <li>-voir la catégorie genre.</li>
+            <li>-laisser un commentaire sur un livre.</li>
+            <li>-rechercher une librairie par son nom.</li>
+            <li>-voir les livres qui la composent.</li>
         </ul>
-        <h4>Vous voulez créer votre librairie et la partager, vous pouvez:</h4>
-        <ul  class="row pb-4 bg-dark-subtle p-2">
-            <li>Faire la demande à l'adresse suivante : <a href="mailto:admin-sharedbooks@gmail.com">admin-sharedbooks@gmail.com</a>.</li>
-            <li>Vous aurez alors accès à un dashboard vous permettant de créer votre librairie (lui donner un nom et une image) .</li>
-            <li>Votre librairie et vos livres seront visibles des autres (en recherchant son nom via la barre de recherche).</li>
+        <h3>Vous voulez créer votre librairie et la partager, vous pouvez :</h3>
+        <ul  class="row pb-4 p-2 list-unstyled">
+            <li>-faire la demande à l'adresse suivante : <a href="mailto:admin-sharedbooks@gmail.com"><span class="text-break">admin-sharedbooks@gmail.com</span></a>.</li>
+            <li>-vous aurez alors accès à un dashboard vous permettant de créer votre librairie (lui donner un nom et une image) .</li>
+            <li>-votre librairie et vos livres seront visibles des autres (en recherchant son nom via la barre de recherche).</li>
         </ul>
     </div>
 {% endblock %}

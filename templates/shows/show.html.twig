@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Books!{% endblock %}
+{% block title %}Books{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -33,9 +33,9 @@
                 {% for comment in comments %}
                 <div class="col-md-3 rounder bg-light m-3 shadow">
                     {% if comment.users.avatar is empty %}
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-user fa-lg"></i>
                     {% else %}
-                        {{ comment.users.avatar }}
+                        <img src="{{asset('divers/avatars/' ~ comment.users.avatar) }}" alt="Avatar" style="width:20px;border-radius:50%;margin-top:10px;">
                     {% endif %}
                     <p>
                         <small class="text-muted">

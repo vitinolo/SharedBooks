@@ -6,20 +6,20 @@
 <div class="row d-flex justify-content-center p-4 mt-5">
     <div class="col-md-4 d-flex justify-content-center p-4 mt-3" style="border:1px solid grey;box-shadow:1px 2px 2px;">  
         {{ form_start(registrationForm) }}
-        <div class="form_row" >
-            <h1 class="d-flex justify-content-center">Please sign up</h1>
-            <div class="errorsRegistrationForm">
-                {{ form_errors(registrationForm) }}          
-                {{ form_row(registrationForm.firstname) }}
-                {{ form_row(registrationForm.lastname) }}
-                {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.avatar) }}
-                {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
-                {{ form_row(registrationForm.agreeTerms) }}  
-                <button type="submit" class="btn btn-primary col-md-4">Register</button>
-                <span class="m-2"><a href="{{ path('app_login') }}" title="s'enregistrer'">Se connecter</a></span>
+            <div class="form_row" >
+                <h1 class="d-flex justify-content-center">Please sign up</h1>
+                <div class="errorsRegistrationForm">
+                    {{ form_errors(registrationForm) }}          
+                    {{ form_row(registrationForm.firstname) }}
+                    {{ form_row(registrationForm.lastname) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.avatar) }}
+                    {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
+                    {{ form_row(registrationForm.agreeTerms, { label: 'RGPD'}) }}  
+                    <button type="submit" class="btn btn-primary col-md-4">Register</button>
+                    <span class="m-2"><a href="{{ path('app_login') }}" title="s'enregistrer'">Se connecter</a></span>
+                </div>
             </div>
-        </div>
         {{ form_end(registrationForm) }}
     </div>    
 </div>
