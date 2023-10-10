@@ -10,6 +10,8 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
@@ -18,9 +20,13 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('firstname')
-            ->add('lastname')
+            ->add('email', EmailType::class)
+            ->add('firstname', TextType::class, [
+                'constraints' => new Length(['min'=>3,'max'=>20]),
+            ])
+            ->add('lastname', TextType::class, [
+                'constraints' => new Length(['min'=>3,'max'=>20]),
+            ])
             ->add('avatar', FileType::class, [ // Utilisation de FileType pour le champ "avatar"
                 'label' => 'Avatar', // Libellé du champ
                 'mapped' => false,
