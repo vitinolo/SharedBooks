@@ -7,9 +7,9 @@ use App\Repository\UserRepository;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -32,9 +32,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 20)]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Votre prénom ne doit pas contenir de chiffre.',
+    )]
     private ?string $firstname = null;
-    
+  
     #[ORM\Column(length: 20)]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Votre nom ne doit pas contenir de chiffre.',
+    )]
     private ?string $lastname = null;
 
     #[ORM\Column(type: 'datetime_immutable', options: ['default'=>'CURRENT_TIMESTAMP'])]
