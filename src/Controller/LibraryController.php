@@ -149,7 +149,7 @@ class LibraryController extends AbstractController
         return $this->render('about/about.html.twig');
     }
 
-    //route et affichage d'un livre
+    //route et affichage d'un livre et création d'un commentaire
     #[Route('/{id}', name: 'showone', requirements:['id'=>'\d+'])]
     public function showOne($id, Book $book, BookRepository $repo, CommentRepository $crepo, EntityManagerInterface $em, Request $request ){
         //0. vérifier si le livre existe

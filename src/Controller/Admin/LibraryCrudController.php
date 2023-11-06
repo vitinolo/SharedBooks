@@ -38,7 +38,8 @@ class LibraryCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-        ->setPermission(Action::DELETE, 'ROLE_EDITOR');
+        ->setPermission(Action::DELETE, 'ROLE_ADMIN')
+        ->setPermission(Action::EDIT, 'ROLE_ADMIN');
     }
     public function configureFilters(Filters $filters): Filters
     {

@@ -47,7 +47,8 @@ class BookCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-        ->setPermission(Action::DELETE, 'ROLE_EDITOR');
+        ->setPermission(Action::DELETE, 'ROLE_ADMIN')
+        ->setPermission(Action::EDIT, 'ROLE_ADMIN');
     }
     public function configureFilters(Filters $filters): Filters
     {
@@ -56,6 +57,7 @@ class BookCrudController extends AbstractCrudController
         ->add('title')
         ->add('author')
         ->add('editor')
+        ->add('fkkinds')
         ;
     }
    

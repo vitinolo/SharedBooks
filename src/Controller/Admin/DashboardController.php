@@ -39,37 +39,37 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         
         if ($this->isGranted('ROLE_EDITOR')){
-            yield MenuItem::section('Libraries');
-            yield MenuItem::subMenu('Libraries', 'fa-solid fa-book-journal-whills')->setSubItems([
-                MenuItem::linkToCrud('Create Library', 'fas fa-plus-circle', Library::class)->setAction(Crud::PAGE_NEW),
-                MenuItem::linkToCrud('Show Library', 'fas fa-eye', Library::class),
+            yield MenuItem::section('Librairies');
+            yield MenuItem::subMenu('Librairies', 'fa-solid fa-book-journal-whills')->setSubItems([
+                MenuItem::linkToCrud('Créer Librairie', 'fas fa-plus-circle', Library::class)->setAction(Crud::PAGE_NEW),
+                MenuItem::linkToCrud('Voir Librairies', 'fas fa-eye', Library::class),
             ]);
         }
         if ($this->isGranted('ROLE_EDITOR')){
-            yield MenuItem::section('Books');
-            yield MenuItem::subMenu('Books', 'fa-solid fa-book')->setSubItems([
-                MenuItem::linkToCrud('Create Book', 'fas fa-plus-circle', Book::class)->setAction(Crud::PAGE_NEW),
-                MenuItem::linkToCrud('Show Book', 'fas fa-eye', Book::class),
+            yield MenuItem::section('Livres');
+            yield MenuItem::subMenu('Livres', 'fa-solid fa-book')->setSubItems([
+                MenuItem::linkToCrud('Créer Livre', 'fas fa-plus-circle', Book::class)->setAction(Crud::PAGE_NEW),
+                MenuItem::linkToCrud('Voir Livres', 'fas fa-eye', Book::class),
             ]);
         }
         if ($this->isGranted('ROLE_ADMIN')){
-            yield MenuItem::section('Users');
-            yield MenuItem::subMenu('Users', 'fa fa-user-circle')->setSubItems([
-                MenuItem::linkToCrud('Create User', 'fas fa-plus-circle', User::class)->setAction(Crud::PAGE_NEW),
-                MenuItem::linkToCrud('Show User', 'fas fa-eye', User::class),
+            yield MenuItem::section('Utilisateurs');
+            yield MenuItem::subMenu('Utilisateurs', 'fa fa-user-circle')->setSubItems([
+                MenuItem::linkToCrud('Créer Utilisateur', 'fas fa-plus-circle', User::class)->setAction(Crud::PAGE_NEW),
+                MenuItem::linkToCrud('Voir Utilisateurs', 'fas fa-eye', User::class),
             ]);
         }
         if ($this->isGranted('ROLE_ADMIN')){
-            yield MenuItem::section('Kinds');
-            yield MenuItem::subMenu('Kinds', 'fa-solid fa-sort')->setSubItems([
-                MenuItem::linkToCrud('Create Kind', 'fas fa-plus-circle', Kind::class)->setAction(Crud::PAGE_NEW),
-                MenuItem::linkToCrud('Show Kind', 'fas fa-eye', Kind::class),
+            yield MenuItem::section('Genres');
+            yield MenuItem::subMenu('Genres', 'fa-solid fa-sort')->setSubItems([
+                MenuItem::linkToCrud('Créer Genre', 'fas fa-plus-circle', Kind::class)->setAction(Crud::PAGE_NEW),
+                MenuItem::linkToCrud('Voir Genres', 'fas fa-eye', Kind::class),
             ]);
         }
         if ($this->isGranted('ROLE_ADMIN')){
-            yield MenuItem::section('Comments');
-            yield MenuItem::subMenu('Comments', 'fa-solid fa-comment')->setSubItems([
-                  MenuItem::linkToCrud('Show Comment', 'fas fa-eye', Comment::class),
+            yield MenuItem::section('Commentaires');
+            yield MenuItem::subMenu('Commentaires', 'fa-solid fa-comment')->setSubItems([
+                  MenuItem::linkToCrud('Voir Commentaires', 'fas fa-eye', Comment::class),
             ]);
         }
     }
