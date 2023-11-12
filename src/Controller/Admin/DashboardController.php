@@ -48,7 +48,7 @@ class DashboardController extends AbstractDashboardController
         if ($this->isGranted('ROLE_EDITOR')){
             yield MenuItem::section('Livres');
             yield MenuItem::subMenu('Livres', 'fa-solid fa-book')->setSubItems([
-                MenuItem::linkToCrud('Créer Livre', 'fas fa-plus-circle', Book::class)->setAction(Crud::PAGE_NEW),
+                MenuItem::linkToCrud('Ajouter Livre', 'fas fa-plus-circle', Book::class)->setAction(Crud::PAGE_NEW),
                 MenuItem::linkToCrud('Voir Livres', 'fas fa-eye', Book::class),
             ]);
         }

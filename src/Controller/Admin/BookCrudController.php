@@ -30,8 +30,6 @@ class BookCrudController extends AbstractCrudController
             TextField::new('isbn'),
             TextField::new('title'),
             TextField::new('author'),
-            TextField::new('lend_to'),
-            TextField::new('lent_date'),
             TextField::new('nb_pages'),
             TextField::new('editor'),
             $image = ImageField::new('book_cover')
@@ -39,7 +37,6 @@ class BookCrudController extends AbstractCrudController
             ->setBasePath('divers/images')
             ->setSortable(false)
             ->setFormTypeOption('required',false)->setColumns('col-md-2'),
-            TextField::new('publication_date'),
             TextField::new('description'),
             DateField::new('createdAt')->onlyOnIndex(),
         ];

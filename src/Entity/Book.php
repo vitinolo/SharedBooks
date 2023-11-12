@@ -26,12 +26,6 @@ class Book
     #[ORM\Column(length: 20)]
     private ?string $author = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
-    private ?string $lendTo = null;
-
-    #[ORM\Column(length: 10, nullable: true)]
-    private ?string $lentDate = null;
-
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $nbPages = null;
 
@@ -41,8 +35,6 @@ class Book
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $bookCover = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
-    private ?string $publicationDate = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
@@ -110,30 +102,6 @@ class Book
         return $this;
     }
 
-    public function getLendTo(): ?string
-    {
-        return $this->lendTo;
-    }
-
-    public function setLendTo(?string $lendTo): static
-    {
-        $this->lendTo = $lendTo;
-
-        return $this;
-    }
-
-    public function getLentDate(): ?string
-    {
-        return $this->lentDate;
-    }
-
-    public function setLentDate(?string $lentDate): static
-    {
-        $this->lentDate = $lentDate;
-
-        return $this;
-    }
-
     public function getNbPages(): ?string
     {
         return $this->nbPages;
@@ -166,18 +134,6 @@ class Book
     public function setBookCover(?string $bookCover): static
     {
         $this->bookCover = $bookCover;
-
-        return $this;
-    }
-
-    public function getPublicationDate(): ?string
-    {
-        return $this->publicationDate;
-    }
-
-    public function setPublicationDate(?string $publicationDate): static
-    {
-        $this->publicationDate = $publicationDate;
 
         return $this;
     }

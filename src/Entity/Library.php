@@ -33,9 +33,13 @@ class Library
     #[ORM\Column(length: 30, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\OneToMany(mappedBy: 'Libraries', targetEntity: Kind::class)]
+    private Collection $kinds;
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
+        $this->kinds = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,6 +123,36 @@ class Library
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Kind>
+     */
+    public function getKinds(): Collection
+    {
+        return $this->kinds;
+    }
+
+    public function addKind(Kind $kind): static
+    {
+        if (!$this->kinds->contains($kind)) {
+            $this->kinds->add($kind);
+            $kind->setLibraries($this);
+        }
+
+        return $this;
+    }
+
+    public function removeKind(Kind $kind): static
+    {
+        if ($this->kinds->removeElement($kind)) {
+            // set the owning side to null (unless already changed)
+            if ($kind->getLibraries() === $this) {
+                $kind->setLibraries(null);
+            }
+        }
 
         return $this;
     }

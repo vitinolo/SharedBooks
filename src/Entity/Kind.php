@@ -22,6 +22,10 @@ class Kind
     #[ORM\OneToMany(mappedBy: 'fkkinds', targetEntity: Book::class)]
     private Collection $books;
 
+    #[ORM\ManyToOne(inversedBy: 'kinds')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Library $Libraries = null;
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
@@ -74,6 +78,18 @@ class Kind
                 $book->setFkkinds(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLibraries(): ?Library
+    {
+        return $this->Libraries;
+    }
+
+    public function setLibraries(?Library $Libraries): static
+    {
+        $this->Libraries = $Libraries;
 
         return $this;
     }
