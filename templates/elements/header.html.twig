@@ -18,7 +18,7 @@
                 {% if app.user %}
                     <div class="row">
                         <div class="col-md-3 d-flex justify-content-center mt-3 p-2"><a href="{{ path('app_logout') }}" title="se déconnecter" aria-label="se déconnecter">
-                            <i class="fa-solid fa-right-from-bracket fa-xl" style="color:black;"></i></a>
+                            <i class="fa-solid fa-power-off fa-xl" style="color:black;"></i></a>
                         </div>
                         <div class="col-md-6 d-flex justify-content-center mt-3 fs-5"><span>Bonjour {{ app.user.firstName }} {{ app.user.lastName }}!</span></div>
                         {% if is_granted('ROLE_EDITOR') in app.user.roles %}

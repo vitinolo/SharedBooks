@@ -15,7 +15,7 @@
                     {{ form_row(registrationForm.email) }}
                     {{ form_row(registrationForm.avatar) }}
                     {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
-                    {{ form_row(registrationForm.agreeTerms, { label: 'RGPD'}) }}  
+                    {{ form_row(registrationForm.agreeTerms, { label: 'En cochant cette case, vous consentez à ce que vos données personnelles soient collectées, traitées et utilisées conformément à notre politique de confidentialité et au Règlement Général sur la Protection des Données (RGPD). Vous pouvez consulter notre politique de confidentialité pour plus d informations sur la manière dont nous protégeons et utilisons vos données personnelles.'}) }}  
                     <button type="submit" class="btn btn-primary col-md-4">Register</button>
                     <span class="m-2"><a href="{{ path('app_login') }}" title="s'enregistrer'">Se connecter</a></span>
                 </div>
