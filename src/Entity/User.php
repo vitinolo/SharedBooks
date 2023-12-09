@@ -51,19 +51,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Gedmo\Timestampable(on:'create')]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'fkusers', targetEntity: Library::class)]
-    private Collection $libraries;
 
     #[ORM\OneToMany(mappedBy: 'Users', targetEntity: Comment::class)]
     private Collection $comments;
 
     #[ORM\Column(length: 40, nullable: true)]
     private ?string $avatar = null;
-    
+
+    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Library $Libraries = null;
 
     public function __construct()
     {
-        $this->libraries = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -178,36 +178,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     } */
 
     /**
-     * @return Collection<int, Library>
-     */
-    public function getLibraries(): Collection
-    {
-        return $this->libraries;
-    }
-
-    public function addLibrary(Library $library): static
-    {
-        if (!$this->libraries->contains($library)) {
-            $this->libraries->add($library);
-            $library->setFkusers($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLibrary(Library $library): static
-    {
-        if ($this->libraries->removeElement($library)) {
-            // set the owning side to null (unless already changed)
-            if ($library->getFkusers() === $this) {
-                $library->setFkusers(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Comment>
      */
     public function getComments(): Collection
@@ -248,5 +218,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-    
+
+    public function getLibraries(): ?Library
+    {
+        return $this->Libraries;
+    }
+
+    public function setLibraries(Library $Libraries): static
+    {
+        $this->Libraries = $Libraries;
+
+        return $this;
+    }
+
+ 
 }

@@ -23,10 +23,6 @@ class Library
     #[Gedmo\Timestampable(on:'create')]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'libraries')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $fkusers = null;
-
     #[ORM\OneToMany(mappedBy: 'fklibraries', targetEntity: Book::class)]
     private Collection $books;
 
@@ -35,6 +31,9 @@ class Library
 
     #[ORM\OneToMany(mappedBy: 'Libraries', targetEntity: Kind::class)]
     private Collection $kinds;
+
+    #[ORM\OneToOne(mappedBy: 'Libraries', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -72,18 +71,6 @@ class Library
 
         return $this;
     } */
-
-    public function getFkusers(): ?User
-    {
-        return $this->fkusers;
-    }
-
-    public function setFkusers(?User $fkusers): static
-    {
-        $this->fkusers = $fkusers;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Book>
@@ -156,4 +143,21 @@ class Library
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): static
+    {
+        // set the owning side of the relation if necessary
+        if ($user->getLibraries() !== $this) {
+            $user->setLibraries($this);
+        }
+
+        $this->user = $user;
+
+        return $this;
+    }  
 }

@@ -26,7 +26,7 @@ class CommentCrudController extends AbstractCrudController
         return [
             IntegerField::new('id')->onlyOnIndex(),
             TextField::new('content'),
-            AssociationField::new('Users'),
+            AssociationField::new('users'),
             DateField::new('createdAt')->onlyOnIndex(),
         ];
     }
