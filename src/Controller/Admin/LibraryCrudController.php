@@ -20,7 +20,6 @@ class LibraryCrudController extends AbstractCrudController
         return Library::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -46,6 +45,5 @@ class LibraryCrudController extends AbstractCrudController
         return $filters
         ->add('name')
         ;
-    }
-   
+    } 
 }

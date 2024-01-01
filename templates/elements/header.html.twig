@@ -6,36 +6,42 @@
     <title>header</title>
   </head>
   <body>
-    <div class="container-fluid p-0">
-        <div class="row header">       
-            <div class="col-md-4 d-flex justify-content-center">   
-                <img src="{{ asset('divers/images/logo.png') }}" style="width:100px;" alt="" />
-            </div>
-            <h1 class="col-md-4 d-flex justify-content-center fw-bold fs-1 mt-3">
-                <a class="nav-link" href="{{ path('app_book') }}" title="retour à l'accueil">SharedBooks</a>
-            </h1>
-            <div class="col-md-4">
-                {% if app.user %}
-                    <div class="row">
-                        <div class="col-md-3 d-flex justify-content-center mt-3 p-2"><a href="{{ path('app_logout') }}" title="se déconnecter" aria-label="se déconnecter">
-                            <i class="fa-solid fa-power-off fa-xl" style="color:black;"></i></a>
-                        </div>
-                        <div class="col-md-6 d-flex justify-content-center mt-3 fs-5"><span>Bonjour {{ app.user.firstName }} {{ app.user.lastName }}!</span></div>
-                        {% if is_granted('ROLE_EDITOR') in app.user.roles %}
+        <div class="container-fluid p-0">
+            <div class="row header">       
+                <div class="col-md-4 d-flex justify-content-center">   
+                    <img src="{{ asset('divers/images/logo.png') }}" style="width:100px;" alt="" />
+                </div>
+                <h1 class="col-md-4 d-flex justify-content-center fw-bold fs-1 mt-3">
+                    <a class="nav-link" href="{{ path('app_book') }}" title="retour à l'accueil">SharedBooks</a>
+                </h1>
+                <div class="col-md-4">
+                    {% if app.user %}
+                        <div class="row">
                             <div class="col-md-3 d-flex justify-content-center mt-3 p-2">
-                                <a href="{{ path('admin') }}" title="vers dashboard" aria-label="vers dashboard"><i class="fa-solid fa-gear fa-xl" style="color:black;"></i></a>
+                                <a href="{{ path('app_logout') }}" title="se déconnecter" aria-label="se déconnecter">
+                                <i class="fa-solid fa-power-off fa-xl" style="color:black;"></i>
+                                </a>
                             </div>
-                        {% endif %}
-                        {% else %}
-                        <div class="col-md-3 d-flex justify-content-end mt-4 mx-auto shake-horizontal" style="color:black;">
-                            <a href="{{ path('app_login') }}" title="se connecter" aria-label="se connecter">
-                                <i class="fa-solid fa-circle-user fa-2x pb-2" style="color:black;"></i>
-                            </a>
+                            <div class="col-md-6 d-flex justify-content-center mt-3 fs-5">
+                                <span>Bonjour {{ app.user.firstName }} {{ app.user.lastName }}!</span>
+                            </div>
+                            {% if is_granted('ROLE_EDITOR') in app.user.roles %}
+                                <div class="col-md-3 d-flex justify-content-center mt-3 p-2">
+                                    <a href="{{ path('admin') }}" title="vers dashboard" aria-label="vers dashboard">
+                                        <i class="fa-solid fa-gear fa-xl" style="color:black;"></i>
+                                    </a>
+                                </div>
+                            {% endif %}
+                            {% else %}
+                            <div class="col-md-3 d-flex justify-content-end mt-4 mx-auto shake-horizontal" style="color:black;">
+                                <a href="{{ path('app_login') }}" title="se connecter" aria-label="se connecter">
+                                    <i class="fa-solid fa-circle-user fa-2x pb-2" style="color:black;"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                {% endif %}
-            </div>      
+                    {% endif %}
+                </div>      
+            </div>
         </div>
-    </div>
   </body>
 </html>

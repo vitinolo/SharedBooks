@@ -17,7 +17,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LibraryController extends AbstractController
 {   
-  //route et affichage des livres (accueil) de façon fluide
     #[Route('/', name: 'app_book')]
     public function index(BookRepository $repo): Response
     {    
